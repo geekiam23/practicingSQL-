@@ -1,0 +1,44 @@
+REMOVE DUPLICATES: (SELECT DISTINCT basketball FROM sports;)
+
+basketball = sports.basketball.unique
+
+
+FILTER RECORDS: (SELECT * FROM sports WHERE ballDiameter > 15;)
+
+IF sports.ballDiameter > 15
+   return sports
+END
+
+
+SORT RECORDS: (SELECT * FROM sports ORDER BY ballDiameter DESC;)
+
+sports = sports.all.sort_by_desc_order
+
+
+LIMIT RECORDS RETURNED: (SELECT * FROM sports WHERE name BETWEEN 'G' AND 'S';)
+
+FOR sports.all
+  IF sports.name.char[0] === 'G' to 'S'
+    return sports
+  END
+END
+
+
+GROUP RECORDS INTO SECTIONS: (SELECT basketball, COUNT(*) FROM sports GROUP BY basketball;)
+
+FOR sports
+  hobbies.sort_by_basketball
+END
+
+
+CALCULATIONS WITH AGGREGATE FUNCTIONS: (SELECT SUM(hobbies) FROM sports;)
+
+sports = hobbies.all.count
+
+JOIN TABLES: (SELECT * FROM movies JOIN actors ON movies.actors_id = actors.id;)
+
+FOR movies.all
+  IF movies != nil && actors != nil
+    movies.actors_id = actors.id
+  END
+END
